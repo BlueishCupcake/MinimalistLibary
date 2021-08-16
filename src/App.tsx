@@ -1,9 +1,20 @@
+//Dependencies
 import React from "react";
-import "./App.css";
+
+//Components
 import Header from "./components/Header";
+import Body from "components/Body";
+
+//Styles
+import "./App.css";
 
 function App() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <Body />
+    </>
+  );
 }
 
 export default App;
