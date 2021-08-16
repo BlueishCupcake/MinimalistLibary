@@ -1,20 +1,14 @@
 //Dependencies
 import React from "react";
 
-//Components
-import Header from "./components/Header";
-import Body from "components/Body";
+//Routes
+import Routes from "routes";
 
 //Styles
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Body />
-    </>
-  );
+  return <Routes />;
 }
 
 export default App;

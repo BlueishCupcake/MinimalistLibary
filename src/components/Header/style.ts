@@ -5,6 +5,10 @@ export const HeaderContainer = styled.div`
   background-color: #4ec5f1;
   display: flex;
   place-content: space-around;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
 `;
 
 export const SearchDiv = styled.div`
