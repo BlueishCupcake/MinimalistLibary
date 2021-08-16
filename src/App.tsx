@@ -1,6 +1,9 @@
 //Dependencies
 import React from "react";
 
+//Context
+import { BooksProvider } from "context/BooksContext";
+
 //Routes
 import Routes from "routes";
 
@@ -8,7 +11,11 @@ import Routes from "routes";
 import "./App.css";
 
 function App() {
-  return <Routes />;
+  return (
+    <BooksProvider>
+      <Routes />
+    </BooksProvider>
+  );
 }
 
 export default App;

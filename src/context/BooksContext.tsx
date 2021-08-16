@@ -7,16 +7,21 @@ const initialState = {
   isLoading: false,
 };
 
-const BookContext = createContext({
+const BooksContext = createContext<{
+  state: any;
+  dispatch: (action: { type: string; data: any }) => void;
+}>({
   state: initialState,
   dispatch: () => {},
 });
 
-const BookProvider = ({ children }: any) => {
+const BooksProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(BookReducer, initialState);
   const value: any = { state, dispatch };
 
-  return <BookContext.Provider value={value}>{children}</BookContext.Provider>;
+  return (
+    <BooksContext.Provider value={value}>{children}</BooksContext.Provider>
+  );
 };
 
-export { BookContext, BookProvider };
+export { BooksContext, BooksProvider };
