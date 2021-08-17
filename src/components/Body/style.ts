@@ -15,13 +15,23 @@ export const StyledHello = styled.div`
 `;
 
 export const BookListContainer = styled.div`
-  padding-top: 54px;
+  padding: 54px 0;
 `;
 
 export const BookDiv = styled.div`
+  > a {
+    display: flex;
+    margin: 15px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+  }
+`;
+
+export const InfoDiv = styled.div`
   display: flex;
-  margin: 15px;
-  cursor: pointer;
+  flex-flow: column;
+  max-width: calc(100% - 130px);
 `;
 
 export const BookTitle = styled.h2`
@@ -37,6 +47,7 @@ export const BookSubtitle = styled.h3`
 export const BookAuthors = styled.h4`
   font-size: 14px;
   margin-left: 10px;
+  flex: 1;
 `;
 
 export const DefaultThumbnail = styled.div`
@@ -47,4 +58,11 @@ export const DefaultThumbnail = styled.div`
   place-items: center;
   font-size: 60px;
   font-weight: 600;
+`;
+
+export const HiddenBtn = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-self: baseline;
 `;

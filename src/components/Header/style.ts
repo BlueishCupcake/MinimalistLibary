@@ -9,6 +9,10 @@ export const HeaderContainer = styled.div`
   width: 100%;
   left: 0;
   top: 0;
+
+  .icon {
+    fill: #000;
+  }
 `;
 
 export const SearchDiv = styled.div`
@@ -29,5 +33,11 @@ export const StyledBtn = styled.button`
   border: 1px solid #000;
   border-radius: 0 30px 30px 0;
   background-color: #fff;
+  cursor: pointer;
+`;
+
+export const HiddenBtn = styled.button`
+  background: none;
+  border: none;
   cursor: pointer;
 `;

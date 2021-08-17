@@ -2,6 +2,7 @@
 import React, { useState, useContext, ChangeEvent } from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import HomeIcon from "@material-ui/icons/Home";
+import { Link } from "react-router-dom";
 
 //Context
 import { BooksContext } from "context/BooksContext";
@@ -32,7 +33,11 @@ const Header = () => {
 
   return (
     <s.HeaderContainer>
-      <HomeIcon />
+      <s.HiddenBtn>
+        <Link to="/">
+          <HomeIcon className="icon" />
+        </Link>
+      </s.HiddenBtn>
 
       <s.SearchDiv>
         <s.SearchInput value={words} onChange={onChangeHandler} />
