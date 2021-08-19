@@ -4,10 +4,14 @@ import { BookReducer } from "reducers/BookReducer";
 
 const initialState = {
   booksList: [],
-  isLoading: false,
+  favorites: [],
   totalPages: 1,
   word: "",
 };
+
+let favorites: any = localStorage.getItem("favorites");
+
+initialState.favorites = favorites ? JSON.parse(favorites) : [];
 
 const BooksContext = createContext<{
   state: any;

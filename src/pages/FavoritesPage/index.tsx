@@ -7,18 +7,18 @@ import { BooksContext } from "context/BooksContext";
 //Components
 import Header from "components/Header";
 import BooksList from "components/BooksList";
-import Footer from "components/Footer";
 
-const SearchResults = () => {
+const FavoirtesPage = () => {
   const { state } = useContext(BooksContext);
+
+  const { favorites } = state;
 
   return (
     <>
       <Header />
-      <BooksList booksList={state.booksList} />
-      <Footer />
+      <BooksList booksList={favorites} />
     </>
   );
 };
 
-export default SearchResults;
+export default FavoirtesPage;

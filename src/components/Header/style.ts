@@ -15,7 +15,7 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const SearchDiv = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   flex: 1;
   place-content: center;

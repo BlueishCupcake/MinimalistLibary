@@ -1,21 +1,16 @@
 //Dependencies
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
-//Context
-import { BooksContext } from "context/BooksContext";
 
 //Styles
 import * as s from "./style";
 
-const ResultsBody = () => {
-  const { state } = useContext(BooksContext);
-
+const BooksList = ({ booksList }: any) => {
   return (
     <s.BookListContainer>
-      {state.booksList?.map((item: any) => {
+      {booksList?.map((item: any) => {
         return (
-          <s.BookDiv>
+          <s.BookDiv key={item.id}>
             <Link to={`/details/${item.id}`}>
               {item.volumeInfo.imageLinks?.thumbnail ? (
                 <img src={item.volumeInfo.imageLinks?.thumbnail} alt="Book" />
@@ -34,4 +29,4 @@ const ResultsBody = () => {
   );
 };
 
-export default ResultsBody;
+export default BooksList;

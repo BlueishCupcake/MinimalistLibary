@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useState, useEffect, useContext, ChangeEvent } from "react";
+import React, { useEffect, useContext, ChangeEvent } from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import HomeIcon from "@material-ui/icons/Home";
 import { Link, useHistory } from "react-router-dom";
@@ -66,18 +66,21 @@ const Header = () => {
         </Link>
       </s.HiddenBtn>
 
-      <s.SearchDiv>
+      <s.SearchForm
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          onClickHandler(true);
+        }}
+      >
         <s.SearchInput value={word} onChange={onChangeHandler} />
-        <s.StyledBtn
-          onClick={() => {
-            onClickHandler(true);
-          }}
-        >
-          Search
-        </s.StyledBtn>
-      </s.SearchDiv>
+        <s.StyledBtn>Search</s.StyledBtn>
+      </s.SearchForm>
 
-      <FavoriteIcon />
+      <s.HiddenBtn>
+        <Link to="/favorites">
+          <FavoriteIcon className="icon" />
+        </Link>
+      </s.HiddenBtn>
     </s.HeaderContainer>
   );
 };

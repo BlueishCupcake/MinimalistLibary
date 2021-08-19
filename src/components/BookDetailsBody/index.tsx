@@ -1,6 +1,9 @@
 //Dependencies
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+
+//Context
+import { BooksContext } from "context/BooksContext";
 
 //Services
 import BooksServices from "services/BooksServices";
@@ -14,9 +17,9 @@ const BookDetailsBody = () => {
 
   const { id } = useParams<{ id: string }>();
 
-  let favorites: any = localStorage.getItem("favorites");
+  const { state, dispatch } = useContext(BooksContext);
 
-  favorites = favorites ? JSON.parse(favorites) : [];
+  let { favorites } = state;
 
   const getBookData = async () => {
     const currentBook = await BooksServices.getBookDetails(id);
@@ -42,6 +45,10 @@ const BookDetailsBody = () => {
       favorites = favorites.filter((item: any) => item.id !== bookData.id);
     }
 
+    dispatch({
+      type: "SET_FAVORITES",
+      data: favorites,
+    });
     localStorage.setItem("favorites", JSON.stringify(favorites));
   };
 
