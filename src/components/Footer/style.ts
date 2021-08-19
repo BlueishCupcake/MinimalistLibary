@@ -34,7 +34,12 @@ export const PageListItem = styled.li<iPageListItem>`
   box-shadow: 3px 3px 3px #00000070;
 
   a {
+    display: flex;
+    place-items: center;
+    place-content: center;
     text-decoration: none;
+    width: 40px;
+    height: 40px;
     color: inherit;
   }
 `;

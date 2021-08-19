@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext, ChangeEvent } from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import HomeIcon from "@material-ui/icons/Home";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //Context
 import { BooksContext } from "context/BooksContext";
@@ -17,22 +17,24 @@ import { GetPage } from "helpers/getPage";
 import * as s from "./style";
 
 const Header = () => {
-  const [words, setWords] = useState<string>("");
+  const { dispatch, state } = useContext(BooksContext);
 
-  const { dispatch } = useContext(BooksContext);
+  const { word } = state;
 
   const page = GetPage();
 
+  const history = useHistory();
+
   useEffect(() => {
-    onClickHandler();
+    onClickHandler(false);
   }, [page]);
 
-  const onClickHandler = async () => {
-    if (!words) {
+  const onClickHandler = async (redirect: boolean) => {
+    if (!word) {
       return;
     }
 
-    const searchBooks = await BooksServices.getBooks(words, page);
+    const searchBooks = await BooksServices.getBooks(word, page);
 
     dispatch({
       type: "SET_BOOKS_LIST",
@@ -43,10 +45,17 @@ const Header = () => {
       type: "SET_TOTAL_PAGES",
       data: Math.ceil(searchBooks.data.totalItems / 10),
     });
+
+    if (redirect) {
+      history.push(`/results/1`);
+    }
   };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setWords(e.currentTarget.value);
+    dispatch({
+      type: "SET_WORD",
+      data: e.currentTarget.value,
+    });
   };
 
   return (
@@ -58,8 +67,14 @@ const Header = () => {
       </s.HiddenBtn>
 
       <s.SearchDiv>
-        <s.SearchInput value={words} onChange={onChangeHandler} />
-        <s.StyledBtn onClick={onClickHandler}>Search</s.StyledBtn>
+        <s.SearchInput value={word} onChange={onChangeHandler} />
+        <s.StyledBtn
+          onClick={() => {
+            onClickHandler(true);
+          }}
+        >
+          Search
+        </s.StyledBtn>
       </s.SearchDiv>
 
       <FavoriteIcon />

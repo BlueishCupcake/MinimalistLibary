@@ -11,7 +11,6 @@ const BookDetails = () => {
     <>
       <Header />
       <BookDetailsBody />
-      <Footer />
     </>
   );
 };

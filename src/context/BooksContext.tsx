@@ -6,6 +6,7 @@ const initialState = {
   booksList: [],
   isLoading: false,
   totalPages: 1,
+  word: "",
 };
 
 const BooksContext = createContext<{

@@ -3,16 +3,17 @@ import React from "react";
 
 //Components
 import Header from "components/Header";
-import HomeBody from "components/HomeBody";
+import ResultsBody from "components/ResultsBody";
 import Footer from "components/Footer";
 
-const Home = () => {
+const SearchResults = () => {
   return (
     <>
       <Header />
-      <HomeBody />
+      <ResultsBody />
+      <Footer />
     </>
   );
 };
 
-export default Home;
+export default SearchResults;

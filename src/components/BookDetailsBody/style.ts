@@ -5,7 +5,7 @@ export const BodyDetails = styled.div`
   flex-flow: column;
   place-items: center;
   place-content: center;
-  padding: 54px 0;
+  padding: 70px 0;
 `;
 
 export const BookImage = styled.img`
