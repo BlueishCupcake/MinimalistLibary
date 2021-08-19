@@ -3,17 +3,17 @@ import React from "react";
 
 //Components
 import Header from "components/Header";
-import Body from "components/Body";
+import BookDetailsBody from "components/BookDetailsBody";
 import Footer from "components/Footer";
 
-const Home = () => {
+const BookDetails = () => {
   return (
     <>
       <Header />
-      <Body />
+      <BookDetailsBody />
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default BookDetails;

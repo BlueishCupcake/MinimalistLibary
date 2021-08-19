@@ -1,14 +1,17 @@
 //Dependencies
-import React, { useState, useContext, ChangeEvent } from "react";
+import React, { useState, useEffect, useContext, ChangeEvent } from "react";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import HomeIcon from "@material-ui/icons/Home";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 //Context
 import { BooksContext } from "context/BooksContext";
 
 //Services
 import BooksServices from "services/BooksServices";
+
+//Helpers
+import { GetPage } from "helpers/getPage";
 
 //Styles
 import * as s from "./style";
@@ -18,12 +21,27 @@ const Header = () => {
 
   const { dispatch } = useContext(BooksContext);
 
+  const page = GetPage();
+
+  useEffect(() => {
+    onClickHandler();
+  }, [page]);
+
   const onClickHandler = async () => {
-    const searchBooks = await BooksServices.getBooks(words, 0);
+    if (!words) {
+      return;
+    }
+
+    const searchBooks = await BooksServices.getBooks(words, page);
 
     dispatch({
       type: "SET_BOOKS_LIST",
-      data: searchBooks.data,
+      data: searchBooks.data.items,
+    });
+
+    dispatch({
+      type: "SET_TOTAL_PAGES",
+      data: Math.ceil(searchBooks.data.totalItems / 10),
     });
   };
 

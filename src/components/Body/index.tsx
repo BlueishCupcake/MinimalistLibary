@@ -1,6 +1,5 @@
 //Dependencies
 import React, { useContext } from "react";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 
 //Context
@@ -14,20 +13,22 @@ const Body = () => {
 
   return (
     <>
-      {state.booksList?.items?.length > 0 ? (
+      {state.booksList?.length > 0 ? (
         <s.BookListContainer>
-          {state.booksList?.items?.map((item: any) => {
+          {state.booksList?.map((item: any) => {
             return (
               <s.BookDiv>
                 <Link to={`/details/${item.id}`}>
                   {item.volumeInfo.imageLinks?.thumbnail ? (
-                    <img src={item.volumeInfo.imageLinks?.thumbnail} />
+                    <img
+                      src={item.volumeInfo.imageLinks?.thumbnail}
+                      alt="Book"
+                    />
                   ) : (
                     <s.DefaultThumbnail>?</s.DefaultThumbnail>
                   )}
                   <s.InfoDiv>
                     <s.BookTitle>{item.volumeInfo.title}</s.BookTitle>
-                    <s.BookSubtitle>{item.volumeInfo.subtitle}</s.BookSubtitle>
                     <s.BookAuthors>{item.volumeInfo.authors}</s.BookAuthors>
                   </s.InfoDiv>
                 </Link>
@@ -43,8 +44,5 @@ const Body = () => {
     </>
   );
 };
-// <s.HiddenBtn>
-//   <FavoriteIcon />
-// </s.HiddenBtn>
 
 export default Body;

@@ -44,9 +44,7 @@ export const DefaultThumbnail = styled.div`
   }
 `;
 
-export const HiddenBtn = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  align-self: baseline;
+export const AddFavorites = styled.div`
+  text-decoration: underline;
+  font-size: 20px;
 `;

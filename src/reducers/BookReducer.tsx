@@ -7,5 +7,9 @@ export const BookReducer = (state: any, action: any) => {
     case "SET_BOOKS_LIST": {
       return { ...state, booksList: action.data };
     }
+
+    case "SET_TOTAL_PAGES": {
+      return { ...state, totalPages: action.data };
+    }
   }
 };

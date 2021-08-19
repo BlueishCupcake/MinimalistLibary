@@ -5,6 +5,7 @@ import { BookReducer } from "reducers/BookReducer";
 const initialState = {
   booksList: [],
   isLoading: false,
+  totalPages: 1,
 };
 
 const BooksContext = createContext<{
