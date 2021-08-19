@@ -20,29 +20,29 @@ const Footer = () => {
 
   const PageItem = ({ item, children }: any) => {
     return (
-      <li>
+      <s.PageListItem>
         <Link to={`/results/${item}`}>{children}</Link>
-      </li>
+      </s.PageListItem>
     );
   };
 
   const Pagination = ({ current, total }: any) => {
     return (
-      <ul>
+      <s.PageList>
         {current > 1 && <PageItem item={1}>1</PageItem>}
 
         {current - 1 > 1 && (
           <PageItem item={current - 1}>{current - 1}</PageItem>
         )}
 
-        <li>{current}</li>
+        <s.PageListItem currentPage>{current}</s.PageListItem>
 
         {current + 1 < total && (
           <PageItem item={current + 1}>{current + 1}</PageItem>
         )}
 
         {current < total && <PageItem item={total}>{total}</PageItem>}
-      </ul>
+      </s.PageList>
     );
   };
 

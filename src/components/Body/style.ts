@@ -15,13 +15,16 @@ export const StyledHello = styled.div`
 `;
 
 export const BookListContainer = styled.div`
-  padding: 54px 0;
+  padding: 70px 0 70px;
 `;
 
 export const BookDiv = styled.div`
+  background-color: #4ec5f150;
+  margin: 15px;
+  box-shadow: 5px 5px 5px #00000050;
+
   > a {
     display: flex;
-    margin: 15px;
     cursor: pointer;
     color: #000;
     text-decoration: none;
