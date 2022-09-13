@@ -1,11 +1,13 @@
-//Dependencies
 import React from "react";
 import { Link } from "react-router-dom";
 
-//Styles
 import * as s from "./style";
 
-const BooksList = ({ booksList }: any) => {
+type BooksListTypes = {
+  booksList: Array<any>;
+};
+
+export const BooksList: React.FC<BooksListTypes> = ({ booksList }) => {
   return (
     <s.BookListContainer>
       {booksList?.map((item: any) => {
@@ -28,5 +30,3 @@ const BooksList = ({ booksList }: any) => {
     </s.BookListContainer>
   );
 };
-
-export default BooksList;

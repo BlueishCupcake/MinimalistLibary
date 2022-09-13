@@ -1,17 +1,13 @@
-//Dependencies
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
-//Context
 import { BooksContext } from "context/BooksContext";
 
-//Services
 import BooksServices from "services/BooksServices";
 
-//Styles
 import * as s from "./style";
 
-const BookDetailsBody = () => {
+export const BookDetailsBody: React.FC = () => {
   const [bookData, setBookData] = useState<any>();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
@@ -21,7 +17,7 @@ const BookDetailsBody = () => {
 
   let { favorites } = state;
 
-  const getBookData = async () => {
+  const getBookData = useCallback(async () => {
     const currentBook = await BooksServices.getBookDetails(id);
     const currentBookFavorite = favorites.find(
       (item: any) => item.id === currentBook.id
@@ -32,7 +28,7 @@ const BookDetailsBody = () => {
     }
 
     setBookData(currentBook);
-  };
+  }, [id, favorites, setIsFavorite, setBookData]);
 
   const favoriteHandler = () => {
     const currentBook = favorites.find((item: any) => item.id === bookData.id);
@@ -54,7 +50,7 @@ const BookDetailsBody = () => {
 
   useEffect(() => {
     getBookData();
-  }, []);
+  }, [getBookData]);
 
   return (
     <s.BodyDetails>
@@ -95,5 +91,3 @@ const BookDetailsBody = () => {
     </s.BodyDetails>
   );
 };
-
-export default BookDetailsBody;

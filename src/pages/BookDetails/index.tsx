@@ -1,11 +1,9 @@
-//Dependencies
 import React from "react";
 
-//Components
-import Header from "components/Header";
-import BookDetailsBody from "components/BookDetailsBody";
+import { Header } from "components/Header";
+import { BookDetailsBody } from "components/BookDetailsBody";
 
-const BookDetails = () => {
+export const BookDetails: React.FC = () => {
   return (
     <>
       <Header />
@@ -13,5 +11,3 @@ const BookDetails = () => {
     </>
   );
 };
-
-export default BookDetails;

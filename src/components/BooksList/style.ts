@@ -5,14 +5,14 @@ export const BookListContainer = styled.div`
 `;
 
 export const BookDiv = styled.div`
-  background-color: #4ec5f150;
+  background-color: var(--lighterBrown);
   margin: 15px;
   box-shadow: 5px 5px 5px #00000050;
 
   > a {
     display: flex;
     cursor: pointer;
-    color: #000;
+    color: var(--lightBrown);
     text-decoration: none;
   }
 `;
@@ -40,7 +40,6 @@ export const BookAuthors = styled.h4`
 `;
 
 export const DefaultThumbnail = styled.div`
-  background-color: #eee;
   width: 130px;
   display: flex;
   place-content: center;

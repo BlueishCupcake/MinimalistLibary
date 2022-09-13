@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useReducer, createContext } from "react";
+import { useReducer, createContext } from "react";
 import { BookReducer } from "reducers/BookReducer";
 
 const initialState = {
@@ -13,7 +13,7 @@ let favorites: any = localStorage.getItem("favorites");
 
 initialState.favorites = favorites ? JSON.parse(favorites) : [];
 
-const BooksContext = createContext<{
+export const BooksContext = createContext<{
   state: any;
   dispatch: (action: { type: string; data: any }) => void;
 }>({
@@ -21,7 +21,7 @@ const BooksContext = createContext<{
   dispatch: () => {},
 });
 
-const BooksProvider = ({ children }: any) => {
+export const BooksProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(BookReducer, initialState);
   const value: any = { state, dispatch };
 
@@ -29,5 +29,3 @@ const BooksProvider = ({ children }: any) => {
     <BooksContext.Provider value={value}>{children}</BooksContext.Provider>
   );
 };
-
-export { BooksContext, BooksProvider };

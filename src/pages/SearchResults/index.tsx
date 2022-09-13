@@ -1,15 +1,12 @@
-//Dependencies
 import React, { useContext } from "react";
 
-//Context
 import { BooksContext } from "context/BooksContext";
 
-//Components
-import Header from "components/Header";
-import BooksList from "components/BooksList";
-import Footer from "components/Footer";
+import { Header } from "components/Header";
+import { BooksList } from "components/BooksList";
+import { Footer } from "components/Footer";
 
-const SearchResults = () => {
+export const SearchResults: React.FC = () => {
   const { state } = useContext(BooksContext);
 
   return (
@@ -20,5 +17,3 @@ const SearchResults = () => {
     </>
   );
 };
-
-export default SearchResults;

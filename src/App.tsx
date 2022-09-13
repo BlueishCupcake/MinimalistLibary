@@ -1,21 +1,15 @@
-//Dependencies
 import React from "react";
 
-//Context
 import { BooksProvider } from "context/BooksContext";
 
-//Routes
-import Routes from "routes";
+import Routes from "pages/routes";
 
-//Styles
 import "./App.css";
 
-function App() {
+export const App: React.FC = () => {
   return (
     <BooksProvider>
       <Routes />
     </BooksProvider>
   );
-}
-
-export default App;
+};

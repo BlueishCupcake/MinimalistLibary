@@ -1,14 +1,11 @@
-//Dependencies
 import React, { useContext } from "react";
 
-//Context
 import { BooksContext } from "context/BooksContext";
 
-//Components
-import Header from "components/Header";
-import BooksList from "components/BooksList";
+import { Header } from "components/Header";
+import { BooksList } from "components/BooksList";
 
-const FavoirtesPage = () => {
+export const FavoritesPage: React.FC = () => {
   const { state } = useContext(BooksContext);
 
   const { favorites } = state;
@@ -20,5 +17,3 @@ const FavoirtesPage = () => {
     </>
   );
 };
-
-export default FavoirtesPage;
