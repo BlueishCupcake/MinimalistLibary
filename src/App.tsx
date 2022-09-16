@@ -4,8 +4,6 @@ import { BooksProvider } from "context/BooksContext";
 
 import Routes from "pages/routes";
 
-import "./App.css";
-
 export const App: React.FC = () => {
   return (
     <BooksProvider>

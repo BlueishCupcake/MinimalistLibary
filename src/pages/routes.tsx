@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-//Pages
 import { Home } from "pages/Home";
 import { SearchResults } from "pages/SearchResults";
 import { BookDetails } from "pages/BookDetails";

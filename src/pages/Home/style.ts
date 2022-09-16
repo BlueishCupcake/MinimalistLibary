@@ -1,43 +1,79 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const inputAnimation = keyframes`
+  0% {background-color: var(--beigeLight)}
+  20% {background-color: transparent}
+
+  40% {background-color: var(--beigeLight)}
+  60% {background-color: transparent}
+
+  80% {background-color: var(--beigeLight)}
+  100% {background-color: transparent}
+`;
 
 export const BodyContainer = styled.div`
   display: flex;
+  position: relative;
   place-items: center;
   place-content: center;
+  height: 100vh;
   background-color: var(--beige);
-  flex-flow: column;
+  flex-flow: column wrap;
   overflow: hidden;
-  padding-top: 50px;
 `;
 
-export const BodyText = styled.p`
-  font-family: "Poller One", cursive;
+export const Label = styled.label`
   color: var(--brown);
   font-size: 22px;
+  font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
 `;
 
-export const TypeWritterWrapper = styled.form`
-  aspect-ratio: 1;
-  width: 670px;
-  max-width: 100%;
-  background: center center url("typewritter.png");
+export const Form = styled.form`
   display: flex;
   place-items: center;
+  flex-flow: column wrap;
 
   @media (max-width: 500px) {
     width: 100vw;
     flex: 1;
-    aspect-ratio: 1/2;
     overflow: hidden;
     margin-left: 8px;
   }
 `;
 
-export const TypeWritterInput = styled.input`
-  padding: 30px;
-  margin: 0 auto 334px;
-  height: 120px;
-  width: 260px;
+export const Input = styled.input`
+  padding: 16px;
+  width: 320px;
+  background-color: transparent;
+  margin-top: 16px;
   border: none;
+  border-bottom: 1px solid black;
+
+  animation-name: ${inputAnimation};
+  animation-duration: 2s;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Button = styled.button`
+  padding: 16px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 16px;
+  width: 160px;
+  border-radius: 4px;
+  border: 1px solid var(--brown);
+  margin-top: 16px;
+
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.5s;
+    background: var(--beigeLight);
+  }
+  transition: 0.5s;
 `;
