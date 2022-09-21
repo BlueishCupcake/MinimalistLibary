@@ -18,6 +18,10 @@ export const BookDetailsBody: React.FC = () => {
   let { favorites } = state;
 
   const getBookData = useCallback(async () => {
+    if (!id) {
+      return;
+    }
+
     const currentBook = await BooksServices.getBookDetails(id);
     const currentBookFavorite = favorites.find(
       (item: any) => item.id === currentBook.id

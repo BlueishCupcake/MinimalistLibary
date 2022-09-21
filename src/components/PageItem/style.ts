@@ -15,6 +15,7 @@ export const PageListItem = styled.li<iPageListItem>`
   width: 40px;
   height: 40px;
   box-shadow: 3px 3px 3px #00000070;
+  border-radius: 8px;
 
   a {
     display: flex;

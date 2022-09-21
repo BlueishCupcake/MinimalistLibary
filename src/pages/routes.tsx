@@ -1,22 +1,31 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Home } from "pages/Home";
 import { SearchResults } from "pages/SearchResults";
 import { BookDetails } from "pages/BookDetails";
 import { FavoritesPage } from "pages/FavoritesPage";
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route path="/" component={Home} exact />
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
 
-      <Route path="/results/:page" component={SearchResults} exact />
+  {
+    path: "/results/:word/:page",
+    element: <SearchResults />,
+  },
 
-      <Route path="/details/:id" component={BookDetails} exact />
+  {
+    path: "/details/:id",
+    element: <BookDetails />,
+  },
+  {
+    path: "/favorites",
+    element: <FavoritesPage />,
+  },
+]);
 
-      <Route path="/favorites" component={FavoritesPage} exact />
-    </Switch>
-  </Router>
-);
+const Routes = () => <RouterProvider router={router} />;
 
 export default Routes;

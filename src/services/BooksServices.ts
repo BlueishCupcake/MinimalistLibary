@@ -8,7 +8,7 @@ const BooksServices = {
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${term}&startIndex=${page}`
       )
-      .catch((err) => console.log(err));
+      .catch((err: string) => console.log(err));
 
     return resp;
   },
@@ -16,7 +16,7 @@ const BooksServices = {
   async getBookDetails(id: string) {
     const resp: any = await axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
-      .catch((err) => console.log(err));
+      .catch((err: string) => console.log(err));
 
     return resp.data;
   },

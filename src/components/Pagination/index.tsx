@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 import { PageItem } from "../PageItem";
 
@@ -10,19 +11,35 @@ type PaginationTypes = {
 };
 
 export const Pagination: React.FC<PaginationTypes> = ({ current, total }) => {
+  const { word } = useParams();
+
   return (
     <s.PageList>
-      {current > 1 && <PageItem item={1}>1</PageItem>}
+      {current > 1 && (
+        <PageItem word={word} item={1}>
+          1
+        </PageItem>
+      )}
 
-      {current - 1 > 1 && <PageItem item={current - 1}>{current - 1}</PageItem>}
+      {current - 1 > 1 && (
+        <PageItem word={word} item={current - 1}>
+          {current - 1}
+        </PageItem>
+      )}
 
       <s.PageListItem currentPage>{current}</s.PageListItem>
 
       {current + 1 < total && (
-        <PageItem item={current + 1}>{current + 1}</PageItem>
+        <PageItem word={word} item={current + 1}>
+          {current + 1}
+        </PageItem>
       )}
 
-      {current < total && <PageItem item={total}>{total}</PageItem>}
+      {current < total && (
+        <PageItem word={word} item={total}>
+          {total}
+        </PageItem>
+      )}
     </s.PageList>
   );
 };

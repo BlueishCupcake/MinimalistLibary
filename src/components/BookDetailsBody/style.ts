@@ -6,6 +6,8 @@ export const BodyDetails = styled.div`
   place-items: center;
   place-content: center;
   padding: 70px 0;
+  background-color: var(--beige);
+  height: 100vh;
 `;
 
 export const BookImage = styled.img`
@@ -47,4 +49,5 @@ export const DefaultThumbnail = styled.div`
 export const AddFavorites = styled.div`
   text-decoration: underline;
   font-size: 20px;
+  cursor: pointer;
 `;

@@ -1,13 +1,7 @@
-import React, { useEffect, useContext, ChangeEvent, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, ChangeEvent, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { BooksContext } from "context/BooksContext";
-
-import BooksServices from "services/BooksServices";
-
-import { Background } from "components/Background";
-
-import { GetPage } from "helpers/getPage";
 
 import * as s from "./style";
 
@@ -16,38 +10,15 @@ export const Home: React.FC = () => {
 
   const { word } = state;
 
-  const page = GetPage();
+  const history = useNavigate();
 
-  const history = useHistory();
+  const onClickHandler = useCallback(async () => {
+    if (!word) {
+      return;
+    }
 
-  const onClickHandler = useCallback(
-    async (redirect: boolean) => {
-      if (!word) {
-        return;
-      }
-
-      const searchBooks = await BooksServices.getBooks(word, page);
-
-      dispatch({
-        type: "SET_BOOKS_LIST",
-        data: searchBooks.data.items,
-      });
-
-      dispatch({
-        type: "SET_TOTAL_PAGES",
-        data: Math.ceil(searchBooks.data.totalItems / 10),
-      });
-
-      if (redirect) {
-        history.push(`/results/1`);
-      }
-    },
-    [page, word, dispatch, history]
-  );
-
-  useEffect(() => {
-    onClickHandler(false);
-  }, [onClickHandler, page]);
+    history(`/results/${word}/1`);
+  }, [word, history]);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -62,7 +33,7 @@ export const Home: React.FC = () => {
       <s.Form
         onSubmit={(e: any) => {
           e.preventDefault();
-          onClickHandler(true);
+          onClickHandler();
         }}
       >
         <s.Input
@@ -74,7 +45,6 @@ export const Home: React.FC = () => {
         />
         <s.Button>Go!</s.Button>
       </s.Form>
-      <Background />
     </s.BodyContainer>
   );
 };

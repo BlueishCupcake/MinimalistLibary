@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const BookListContainer = styled.div`
-  padding: 70px 0 70px;
+  background-color: var(--beige);
+  overflow: hidden;
+  padding: 100px 0;
 `;
 
 export const BookDiv = styled.div`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-  padding: 30px;
+  padding: 30px 0;
   background-color: var(--lightBrown);
   display: flex;
   place-content: space-around;

@@ -13,13 +13,17 @@ const inputAnimation = keyframes`
 
 export const BodyContainer = styled.div`
   display: flex;
-  position: relative;
   place-items: center;
   place-content: center;
   height: 100vh;
   background-color: var(--beige);
   flex-flow: column wrap;
   overflow: hidden;
+
+  @media (max-width: 810px) {
+    place-items: center;
+    place-content: center;
+  }
 `;
 
 export const Label = styled.label`
@@ -35,11 +39,13 @@ export const Form = styled.form`
   place-items: center;
   flex-flow: column wrap;
 
-  @media (max-width: 500px) {
-    width: 100vw;
-    flex: 1;
-    overflow: hidden;
-    margin-left: 8px;
+  @media (max-width: 412px) {
+    place-content: center;
+  }
+
+  @media (max-width: 810px) {
+    place-items: center;
+    place-content: center;
   }
 `;
 
@@ -56,6 +62,10 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 360px) {
+    width: 300px;
   }
 `;
 
