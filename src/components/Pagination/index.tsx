@@ -35,9 +35,9 @@ export const Pagination: React.FC<PaginationTypes> = ({ current, total }) => {
         </PageItem>
       )}
 
-      {current < total && (
-        <PageItem word={word} item={total}>
-          {total}
+      {current + 1 < total && (
+        <PageItem word={word} item={current + 1}>
+          {current + 2}
         </PageItem>
       )}
     </s.PageList>
